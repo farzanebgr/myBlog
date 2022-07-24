@@ -1,0 +1,12 @@
+{% load static %}
+
+{% include 'includes/header.html' %}
+
+<title>{% block pageTitle %}{% endblock %}</title>
+
+
+{% include 'includes/navbar.html' %}
+
+{% block contentValue %}{% endblock %}
+
+{% include 'includes/footer.html' %}
