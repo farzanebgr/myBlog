@@ -36,10 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # internal apps
+    'useraccount',
     'productapp',
     'homeapp',
     'contactapp',
-    'accountapp',
     # external apps
     'django_render_partial',
 ]
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'mySite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-AUTH_USER_MODEL = 'accountapp.User'
+AUTH_USER_MODEL = 'useraccount.User'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

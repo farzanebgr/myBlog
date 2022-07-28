@@ -14,7 +14,7 @@
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img src="images/product-details/1.jpg" alt="">
+								<img src="{{ product.image.url }}" alt="">
 								<h3>بزرگنمایـی</h3>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -53,12 +53,12 @@
 							<div class="product-information"><!--/product-information-->
 								<img src="images/product-details/new.png" class="newarrival" alt="">
 								<div>
-									<h2>{{ productC.title }}</h2>
-									<p>شناسـه : {{ productC.id }}</p>
+									<h2>{{ product.title }}</h2>
+									<p>شناسـه : {{ product.id }}</p>
 								</div>
 								<div>
 									<span>
-										<span>قیمت : {{ productC.price }} تومان</span>
+										<span>قیمت : {{ product.price }} تومان</span>
 									</span>
 									<form action="{% url 'product-favorite-page' %}" method="post">
                                         {% csrf_token %}
@@ -74,8 +74,8 @@
 								<div>
 									<p><b>موجـودی :</b> در انبـار موجود می باشد</p>
 									<p><b>شرایـط :</b> جدیـد</p>
-									{% if productC.brand %}
-                                        <p><b>برنـد :</b> {{ productC.brand.title }} </p>
+									{% if product.brand %}
+                                        <p><b>برنـد :</b> {{ product.brand.title }} </p>
 									{% endif %}
 								</div>
 								<span class="socials-share share">
