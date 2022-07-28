@@ -1,41 +1,15 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
+
 from .models import product
-from django.views.generic.base import TemplateView
-from django.views.generic import ListView
+from django.views.generic.base import TemplateView, View
+from django.views.generic import ListView, DetailView
 
-class ProductDetailsView(ListView):
+
+class ProductDetailsView(DetailView):
     template_name = 'productapp/productDetails.html'
+    model = product
 
-    def get_queryset(self):
-        pass
-
-# class ProductDetailsView(TemplateView):
-#     template_name = 'productapp/productDetails.html'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super(ProductDetailsView, self).get_context_data()
-#         slug = kwargs['slug']
-#         productInstance = get_object_or_404(product, slug=slug)
-#         context['product'] = productInstance
-#         return context
-
-
-# def showProductDetail(request, slug):
-#     productC = get_object_or_404(product, slug=slug)
-#     return render(request, 'productapp/productDetails.html', {'productC': productC})
-
-# def showProductList(request):
-#     productAll = product.objects.all().order_by('price')[:5]
-#     return render(request, 'productapp/productsList.html', {'productAll': productAll})
-
-# class ProductListView(TemplateView):
-#     template_name = 'productapp/productsList.html'
-#
-#     def get_context_data(self, **kwargs):
-#         products = product.objects.all().order_by('price')[:5]
-#         context = super(ProductListView, self).get_context_data()
-#         context['products'] = products
-#         return context
 
 class ProductListView(ListView):
     template_name = 'productapp/productsList.html'
@@ -46,3 +20,11 @@ class ProductListView(ListView):
         base_query = super(ProductListView, self).get_queryset()
         data = base_query.filter(isActive=True)
         return data
+
+
+class AddProductFavorite(View):
+    def post(self, request):
+        product_id = request.POST["product_id"]
+        product1 = product.objects.get(pk=product_id)
+        request.session["product_favorite"] = product_id
+        return redirect(product1.get_absolute_url())

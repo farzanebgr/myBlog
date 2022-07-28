@@ -16,3 +16,7 @@ class contactUs(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class userProfile(models.Model):
+    image = models.ImageField(upload_to='images')

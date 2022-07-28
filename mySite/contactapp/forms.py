@@ -2,40 +2,6 @@ from django import forms
 from .models import contactUs
 
 
-class contactUsForm(forms.Form):
-    fullName = forms.CharField(label='نام',
-                               max_length=50,
-                               required=True,
-                               error_messages={
-                                   'required': ' برای ثبت پیام لازم است نام خود را درج کنید'
-                               },
-                               widget=forms.TextInput(attrs={
-                                   'class': 'form-control',
-                                   'placeholder': 'نام و نام خانوادگی خود'
-                               }
-                               ))
-    title = forms.CharField(label='موضوع',
-                            widget=forms.TextInput(attrs={
-                                'class': 'form-control',
-                                'placeholder': 'موضوع پیام شما'
-                            }
-                            ))
-    email = forms.EmailField(label='ایمیل',
-                             required=True,
-                             widget=forms.EmailInput(attrs={
-                                 'class': 'form-control',
-                                 'placeholder': 'آدرس ایمیل'
-                             }))
-    message = forms.CharField(label='پیام',
-                              required=True,
-                              widget=forms.Textarea(
-                                  attrs={
-                                      'class': 'form-control',
-                                      'placeholder': 'متن پیام شما',
-                                      'id': 'message'
-                                  }))
-
-
 class contactUsModelForm(forms.ModelForm):
     class Meta:
         model = contactUs

@@ -60,14 +60,16 @@
 									<span>
 										<span>قیمت : {{ productC.price }} تومان</span>
 									</span>
-									<span>
+									<form action="{% url 'product-favorite-page' %}" method="post">
+                                        {% csrf_token %}
 										<label>تعداد :</label>
-										<input type="text" value="3" class="search_box">
-										<button type="button" class="btn btn-fefault cart">
+										<input type="hidden" name="product_id" value="{{ product.id }}" class="search_box">
+										<button type="submit" class="btn btn-fefault cart">
 											<i class="fa fa-shopping-cart"></i>
-											افـزودن به سبـد خریـد
+											ثبت به عنوان کالای محبوب
 										</button>
 									</span>
+                                    </form>
 								</div>
 								<div>
 									<p><b>موجـودی :</b> در انبـار موجود می باشد</p>

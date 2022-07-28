@@ -12,7 +12,7 @@
 				    	<form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
                             {% csrf_token %}
 {##}
-{#                        {% for field in contactForm %}#}
+{#                        {% for field in form %}#}
 {#                        <div class="col-md-12 form-group">#}
 {#                            {{ field.label_tag }}#}
 {#                            {{ field.title }}#}
@@ -20,29 +20,29 @@
 {#                        </div>#}
 {#                        {% endfor %}#}
 {#                        <hr>#}
-                                <div class="col-md-6 form-group {% if contactForm.fullName.errors %} text-danger {% endif %}">
-                                    {{ contactForm.fullName.label_tag }}
-                                    {{ contactForm.fullName }}
-                                    {{ contactForm.fullName.errors }}
+                                <div class="col-md-6 form-group">
+                                    {{ form.fullName.label_tag }}
+                                    {{ form.fullName }}
+                                    {{ form.fullName.errors }}
 
                                 </div>
 
-                             <div class="col-md-6 form-group {% if contactForm.email.errors %} text-info {% endif %}">
-                                    {{ contactForm.email.label_tag }}
-                                    {{ contactForm.email }}
-                                    {{ contactForm.email.errors }}
+                             <div class="col-md-6 form-group {% if form.email.errors %} text-info {% endif %}">
+                                    {{ form.email.label_tag }}
+                                    {{ form.email }}
+                                    {{ form.email.errors }}
 
                                 </div>
                              <div class="col-md-12 form-group">
-                                    {{ contactForm.title.label_tag }}
-                                    {{ contactForm.title }}
-                                    {{ contactForm.title.errors }}
+                                    {{ form.title.label_tag }}
+                                    {{ form.title }}
+                                    {{ form.title.errors }}
 
                                 </div>
-                             <div class="col-md-12 form-group {% if contactForm.message.errors %} text-warning {% endif %}">
-                                    {{ contactForm.message.label_tag }}
-                                    {{ contactForm.message }}
-                                    {{ contactForm.message.errors }}
+                             <div class="col-md-12 form-group {% if form.message.errors %} text-warning {% endif %}">
+                                    {{ form.message.label_tag }}
+                                    {{ form.message }}
+                                    {{ form.message.errors }}
 
                                 </div>
 {#                            {% if hasError %}#}
