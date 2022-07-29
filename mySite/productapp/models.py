@@ -4,8 +4,9 @@ from django.utils.text import slugify
 
 
 class ProductCategory(models.Model):
-    title = models.CharField(max_length=300, db_index=True, verbose_name='عنوان')
+    title = models.CharField(max_length=300, db_index=True, verbose_name='عنوان دسته بندی')
     urlTitle = models.CharField(max_length=300, db_index=True, verbose_name='Url عنوان در')
+    image = models.ImageField(upload_to='images/category', null=True, blank=True, verbose_name='تصویر دسته بندی')
     isActive = models.BooleanField(verbose_name='فعال / غیرفعال')
     isDelete = models.BooleanField(verbose_name='حذف شده / نشده', null=True)
 
@@ -35,6 +36,8 @@ class product(models.Model):
     image = models.ImageField(upload_to='images/products', null=True, blank=True, verbose_name='تصویر محصول')
     brand = models.ForeignKey(ProductBrand, on_delete=models.CASCADE, verbose_name='برند', null=True, blank=True)
     price = models.IntegerField(verbose_name='قیمت')
+    numbers = models.IntegerField(verbose_name='تعداد', null=True, blank=True)
+    dateOfCreate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name='تاریخ ثبت')
     shortDescription = models.CharField(max_length=360, db_index=True, default='empty', verbose_name='توضیحات کوتاه')
     Description = models.TextField(db_index=True, verbose_name='توضیحات اصلی')
     isActive = models.BooleanField(default=False, verbose_name='فعال /غیر فعال')

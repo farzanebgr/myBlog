@@ -1,17 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
-from django.views import View
 
-
-# def indexPage(request):
-#     return render(request, 'homeapp/index_page.html')
-
-# class homeView(View):
-#     def get(self, request):
-#         context = {
-#             'data': 'this is a data...'
-#         }
-#         return render(request, 'homeapp/index_page.html', context)
 class homeView(TemplateView):
     template_name = 'homeapp/index_page.html'
 

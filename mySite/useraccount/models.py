@@ -3,9 +3,9 @@ from django.db import models
 
 
 class User(AbstractUser):
-    mobile = models.CharField(max_length=20, verbose_name='تلفن همراه', null=True, blank=True)
-    avatar = models.CharField(max_length=20, verbose_name='تصویر آواتار', null=True, blank=True)
-    emailActiveCode = models.CharField(max_length=100, verbose_name='کد فعال سازی ایمیل')
+    age = models.IntegerField(verbose_name='سن', null=True, blank=True)
+    gender = models.BooleanField(verbose_name='جنسیت', choices=[(0, 'مرد'), (1, 'زن')], null=True, blank=True)
+    phone = models.CharField(max_length=11, verbose_name='تلفن همراه', null=True, blank=True)
 
     class Meta:
         verbose_name = 'کاربر'
