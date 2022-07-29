@@ -30,3 +30,16 @@ class AddProductFavorite(View):
         product1 = product.objects.get(pk=product_id)
         request.session["product_favorite"] = product_id
         return redirect(product1.get_absolute_url())
+
+
+class ProductsView(ListView):
+    template_name = 'productapp/productPage.html'
+    model = product
+    context_object_name = 'products'
+    ordering = ['price']
+    paginate_by = 2
+
+    def get_queryset(self):
+        base_query = super(ProductsView, self).get_queryset()
+        data = base_query.filter(isActive=True)
+        return data
