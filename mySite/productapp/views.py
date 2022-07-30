@@ -1,7 +1,8 @@
+from django.http import request
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
-from .models import product
+from .models import product, ProductBrand, ProductCategory
 from django.views.generic.base import TemplateView, View
 from django.views.generic import ListView, DetailView
 
@@ -22,6 +23,22 @@ class ProductListView(ListView):
         base_query = super(ProductListView, self).get_queryset()
         data = base_query.filter(isActive=True)
         return data
+
+
+class CategoryListView(ListView):
+    template_name = 'productapp/incloudes/brandItems.html'
+    model = ProductBrand
+    context_object_name = 'category'
+
+    def CategoryList(request):
+        Category_List = ProductCategory.objects.all()
+        for item in Category_List:
+            item.Category_List_set
+
+        context = {
+            'Category_List': Category_List
+        }
+        return render(request, 'productapp/incloudes/brandItems.html', context)
 
 
 class AddProductFavorite(View):

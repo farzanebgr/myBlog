@@ -12,15 +12,17 @@ class homeListView(ListView):
     context_object_name = 'products'
     ordering = ['price']
 
-    def get_queryset(self):
-        base_query = super(homeListView, self).get_queryset()
-        data = base_query.filter(isActive=True)
-        return data
-
     def get_context_data(self, **kwargs):
+        base_query = super(homeListView, self).get_queryset()
+        data1 = base_query.filter(category=1)
+        data2 = base_query.filter(category=2)
+        data3 = base_query.filter(category=3)
         setting: siteSetting = siteSetting.objects.filter(isMainSettings=True).first()
         context = {
-            'site_Settings': setting
+            'site_Settings': setting,
+            'data1': data1,
+            'data2': data2,
+            'data3': data3,
         }
         return context
 
